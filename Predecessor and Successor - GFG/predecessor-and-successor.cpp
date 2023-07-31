@@ -49,8 +49,9 @@ class Solution
    
     void findPreSuc(Node* root, Node*& pre, Node*& suc, int key)
     {
-        findPre(root,pre,key);
+        //findPre(root,pre,key);
         suc = NULL;
+        pre = NULL;
         Node *head = root;
         while(head!=NULL){
             if(head->key>key){
@@ -58,6 +59,15 @@ class Solution
                 head = head->left;
             }else{
                 head = head->right;
+            }
+        }
+        head = root;
+        while(head!=NULL){
+            if(head->key>=key){
+                head = head->left;
+            }else{
+                pre=head;
+                head=head->right;
             }
         }
         return ;
